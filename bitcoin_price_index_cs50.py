@@ -6,8 +6,11 @@ try:
     r = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json")
     json = r.json()
     z = (json['bpi']['USD']['rate']).replace(',', '')
-    x = (float(z)*float(sys.argv[1]))
-    print(format(x, ".4f"))
+    mynum = float(sys.argv[1])
+    x = (float(z)*mynum)
+    print("$", end="")
+    y = f"{x:,.4f}"
+    print(y, end="")
 except IndexError:
     sys.exit('Missing command-line argument ')
 except ValueError:
